@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ENGINEERSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="E_Address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MapPathLarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MapPathSmall" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Address_E_User" FromRole="E_Address" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_Ads">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Ads_E_User" FromRole="E_Ads" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Category_E_User" FromRole="E_Category" ToRole="E_User" />
+    <NavigationProperty Name="E_Post" Relationship="Self.FK_E_Post_E_Category" FromRole="E_Category" ToRole="E_Post" />
+  </EntityType>
+  <EntityType Name="E_Comment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CommentContent" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isApproved" Type="Boolean" Nullable="false" />
+    <Property Name="ApproveUserID" Type="Int32" />
+    <Property Name="ApproveDate" Type="DateTime" Precision="3" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" />
+    <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="E_Post" Relationship="Self.FK_E_Comment_E_Post" FromRole="E_Comment" ToRole="E_Post" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Comment_E_User" FromRole="E_Comment" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isRead" Type="Boolean" Nullable="false" />
+    <Property Name="ReadUserID" Type="Int32" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Contact_E_User" FromRole="E_Contact" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_FavLogoTitle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fav" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_FavLogoTitle_E_User" FromRole="E_FavLogoTitle" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_Log_Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="IPAdress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProcessID" Type="Int32" Nullable="false" />
+    <Property Name="ProcessType" Type="Int32" Nullable="false" />
+    <Property Name="ProcessCategoryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProcessDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_ProcessType" Relationship="Self.FK_E_Log_Table_E_ProcessType" FromRole="E_Log_Table" ToRole="E_ProcessType" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Log_Table_E_User" FromRole="E_Log_Table" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_Meta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MetaContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Meta_E_User1" FromRole="E_Meta" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_Post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ShortContent" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ViewCount" Type="Int32" Nullable="false" />
+    <Property Name="SeoLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Slider" Type="Boolean" Nullable="false" />
+    <Property Name="Area1" Type="Boolean" Nullable="false" />
+    <Property Name="Area2" Type="Boolean" Nullable="false" />
+    <Property Name="Area3" Type="Boolean" Nullable="false" />
+    <Property Name="Notification" Type="Boolean" Nullable="false" />
+    <Property Name="LanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddUserID" Type="Int32" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_Category" Relationship="Self.FK_E_Post_E_Category" FromRole="E_Post" ToRole="E_Category" />
+    <NavigationProperty Name="E_Comment" Relationship="Self.FK_E_Comment_E_Post" FromRole="E_Post" ToRole="E_Comment" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Post_E_User" FromRole="E_Post" ToRole="E_User" />
+    <NavigationProperty Name="E_PostImage" Relationship="Self.FK_E_PostImage_E_Post" FromRole="E_Post" ToRole="E_PostImage" />
+    <NavigationProperty Name="E_PostTag" Relationship="Self.FK_E_PostTag_E_Post" FromRole="E_Post" ToRole="E_PostTag" />
+  </EntityType>
+  <EntityType Name="E_PostImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostID" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_Post" Relationship="Self.FK_E_PostImage_E_Post" FromRole="E_PostImage" ToRole="E_Post" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_PostImage_E_User" FromRole="E_PostImage" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_PostTag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostID" Type="Int32" Nullable="false" />
+    <Property Name="TagContent" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_Post" Relationship="Self.FK_E_PostTag_E_Post" FromRole="E_PostTag" ToRole="E_Post" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_PostTag_E_User" FromRole="E_PostTag" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_ProcessType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProcessName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="E_Log_Table" Relationship="Self.FK_E_Log_Table_E_ProcessType" FromRole="E_ProcessType" ToRole="E_Log_Table" />
+  </EntityType>
+  <EntityType Name="E_SocialMedia">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_SocialMedia_E_User" FromRole="E_SocialMedia" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="E_User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NameSurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_Address" Relationship="Self.FK_E_Address_E_User" FromRole="E_User" ToRole="E_Address" />
+    <NavigationProperty Name="E_Ads" Relationship="Self.FK_E_Ads_E_User" FromRole="E_User" ToRole="E_Ads" />
+    <NavigationProperty Name="E_Category" Relationship="Self.FK_E_Category_E_User" FromRole="E_User" ToRole="E_Category" />
+    <NavigationProperty Name="E_Comment" Relationship="Self.FK_E_Comment_E_User" FromRole="E_User" ToRole="E_Comment" />
+    <NavigationProperty Name="E_Contact" Relationship="Self.FK_E_Contact_E_User" FromRole="E_User" ToRole="E_Contact" />
+    <NavigationProperty Name="E_FavLogoTitle" Relationship="Self.FK_E_FavLogoTitle_E_User" FromRole="E_User" ToRole="E_FavLogoTitle" />
+    <NavigationProperty Name="E_Log_Table" Relationship="Self.FK_E_Log_Table_E_User" FromRole="E_User" ToRole="E_Log_Table" />
+    <NavigationProperty Name="E_Meta" Relationship="Self.FK_E_Meta_E_User1" FromRole="E_User" ToRole="E_Meta" />
+    <NavigationProperty Name="E_Post" Relationship="Self.FK_E_Post_E_User" FromRole="E_User" ToRole="E_Post" />
+    <NavigationProperty Name="E_PostImage" Relationship="Self.FK_E_PostImage_E_User" FromRole="E_User" ToRole="E_PostImage" />
+    <NavigationProperty Name="E_PostTag" Relationship="Self.FK_E_PostTag_E_User" FromRole="E_User" ToRole="E_PostTag" />
+    <NavigationProperty Name="E_SocialMedia" Relationship="Self.FK_E_SocialMedia_E_User" FromRole="E_User" ToRole="E_SocialMedia" />
+    <NavigationProperty Name="E_Video" Relationship="Self.FK_E_Video_E_User" FromRole="E_User" ToRole="E_Video" />
+  </EntityType>
+  <EntityType Name="E_Video">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OriginalVideoPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddUserID" Type="Int32" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateUserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="E_User" Relationship="Self.FK_E_Video_E_User" FromRole="E_Video" ToRole="E_User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_E_Address_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Address" Type="Self.E_Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Address">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Ads_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Ads" Type="Self.E_Ads" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Ads">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Category_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Category" Type="Self.E_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Category">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Post_E_Category">
+    <End Role="E_Category" Type="Self.E_Category" Multiplicity="1" />
+    <End Role="E_Post" Type="Self.E_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Post">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Comment_E_Post">
+    <End Role="E_Post" Type="Self.E_Post" Multiplicity="1" />
+    <End Role="E_Comment" Type="Self.E_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Comment">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Comment_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="0..1" />
+    <End Role="E_Comment" Type="Self.E_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Comment">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Contact_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Contact" Type="Self.E_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Contact">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_FavLogoTitle_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_FavLogoTitle" Type="Self.E_FavLogoTitle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_FavLogoTitle">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Log_Table_E_ProcessType">
+    <End Role="E_ProcessType" Type="Self.E_ProcessType" Multiplicity="1" />
+    <End Role="E_Log_Table" Type="Self.E_Log_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_ProcessType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Log_Table">
+        <PropertyRef Name="ProcessType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Log_Table_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Log_Table" Type="Self.E_Log_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Log_Table">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Meta_E_User1">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Meta" Type="Self.E_Meta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Meta">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Post_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Post" Type="Self.E_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Post">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_PostImage_E_Post">
+    <End Role="E_Post" Type="Self.E_Post" Multiplicity="1" />
+    <End Role="E_PostImage" Type="Self.E_PostImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_PostImage">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_PostTag_E_Post">
+    <End Role="E_Post" Type="Self.E_Post" Multiplicity="1" />
+    <End Role="E_PostTag" Type="Self.E_PostTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_PostTag">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_PostImage_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_PostImage" Type="Self.E_PostImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_PostImage">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_PostTag_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_PostTag" Type="Self.E_PostTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_PostTag">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_SocialMedia_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_SocialMedia" Type="Self.E_SocialMedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_SocialMedia">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_E_Video_E_User">
+    <End Role="E_User" Type="Self.E_User" Multiplicity="1" />
+    <End Role="E_Video" Type="Self.E_Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="E_User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="E_Video">
+        <PropertyRef Name="LastUpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ENGINEERSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="E_Address" EntityType="Self.E_Address" />
+    <EntitySet Name="E_Ads" EntityType="Self.E_Ads" />
+    <EntitySet Name="E_Category" EntityType="Self.E_Category" />
+    <EntitySet Name="E_Comment" EntityType="Self.E_Comment" />
+    <EntitySet Name="E_Contact" EntityType="Self.E_Contact" />
+    <EntitySet Name="E_FavLogoTitle" EntityType="Self.E_FavLogoTitle" />
+    <EntitySet Name="E_Log_Table" EntityType="Self.E_Log_Table" />
+    <EntitySet Name="E_Meta" EntityType="Self.E_Meta" />
+    <EntitySet Name="E_Post" EntityType="Self.E_Post" />
+    <EntitySet Name="E_PostImage" EntityType="Self.E_PostImage" />
+    <EntitySet Name="E_PostTag" EntityType="Self.E_PostTag" />
+    <EntitySet Name="E_ProcessType" EntityType="Self.E_ProcessType" />
+    <EntitySet Name="E_SocialMedia" EntityType="Self.E_SocialMedia" />
+    <EntitySet Name="E_User" EntityType="Self.E_User" />
+    <EntitySet Name="E_Video" EntityType="Self.E_Video" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_E_Address_E_User" Association="Self.FK_E_Address_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Address" EntitySet="E_Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Ads_E_User" Association="Self.FK_E_Ads_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Ads" EntitySet="E_Ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Category_E_User" Association="Self.FK_E_Category_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Category" EntitySet="E_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Post_E_Category" Association="Self.FK_E_Post_E_Category">
+      <End Role="E_Category" EntitySet="E_Category" />
+      <End Role="E_Post" EntitySet="E_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Comment_E_Post" Association="Self.FK_E_Comment_E_Post">
+      <End Role="E_Post" EntitySet="E_Post" />
+      <End Role="E_Comment" EntitySet="E_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Comment_E_User" Association="Self.FK_E_Comment_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Comment" EntitySet="E_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Contact_E_User" Association="Self.FK_E_Contact_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Contact" EntitySet="E_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_FavLogoTitle_E_User" Association="Self.FK_E_FavLogoTitle_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_FavLogoTitle" EntitySet="E_FavLogoTitle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Log_Table_E_ProcessType" Association="Self.FK_E_Log_Table_E_ProcessType">
+      <End Role="E_ProcessType" EntitySet="E_ProcessType" />
+      <End Role="E_Log_Table" EntitySet="E_Log_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Log_Table_E_User" Association="Self.FK_E_Log_Table_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Log_Table" EntitySet="E_Log_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Meta_E_User1" Association="Self.FK_E_Meta_E_User1">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Meta" EntitySet="E_Meta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Post_E_User" Association="Self.FK_E_Post_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Post" EntitySet="E_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_PostImage_E_Post" Association="Self.FK_E_PostImage_E_Post">
+      <End Role="E_Post" EntitySet="E_Post" />
+      <End Role="E_PostImage" EntitySet="E_PostImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_PostTag_E_Post" Association="Self.FK_E_PostTag_E_Post">
+      <End Role="E_Post" EntitySet="E_Post" />
+      <End Role="E_PostTag" EntitySet="E_PostTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_PostImage_E_User" Association="Self.FK_E_PostImage_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_PostImage" EntitySet="E_PostImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_PostTag_E_User" Association="Self.FK_E_PostTag_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_PostTag" EntitySet="E_PostTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_SocialMedia_E_User" Association="Self.FK_E_SocialMedia_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_SocialMedia" EntitySet="E_SocialMedia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_E_Video_E_User" Association="Self.FK_E_Video_E_User">
+      <End Role="E_User" EntitySet="E_User" />
+      <End Role="E_Video" EntitySet="E_Video" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,12 @@
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\DAL.dll.config
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\DAL.dll
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\DAL.pdb
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\DTO.dll
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\EntityFramework.dll
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\DTO.pdb
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\bin\Debug\EntityFramework.xml
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\obj\Debug\DAL.dll
+C:\Users\errah\ASPNET Course Program\MVC\EngineerWeb\DAL\obj\Debug\DAL.pdb
